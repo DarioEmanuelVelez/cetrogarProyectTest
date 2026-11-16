@@ -3,6 +3,7 @@
 
 # Dependencias
 node_modules/
+node-v26.13.0-win-x64/
 
 # Resultados de Playwright
 test-results/
