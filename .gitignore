@@ -1,5 +1,6 @@
 # Variables de entorno (contiene credenciales sensibles)
 .env
+storageState.json/
 
 # Dependencias
 node_modules/

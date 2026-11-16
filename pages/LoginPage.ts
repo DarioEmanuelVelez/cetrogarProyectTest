@@ -19,6 +19,7 @@ export class LoginPage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly emailPasswordButton: Locator;
+  readonly myAccountButton: Locator;
   readonly errorMessage: Locator;
 
   constructor(page: Page) {
@@ -42,6 +43,11 @@ export class LoginPage {
     // Botón para entrar con email y contraseña
     this.emailPasswordButton = page.getByRole('button', {
       name: /Entrar con e-mail y contraseña/i,
+    });
+
+     
+    this.myAccountButton = page.getByRole('link', {
+      name: /Mi Cuenta/i,
     });
 
     // Mensaje de error

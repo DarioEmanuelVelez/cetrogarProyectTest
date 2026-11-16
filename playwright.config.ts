@@ -11,6 +11,7 @@ export default defineConfig({
 
   use: {
     baseURL: 'https://www.cetrogar.com.ar',
+    storageState: 'storageState.json',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',

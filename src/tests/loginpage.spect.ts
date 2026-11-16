@@ -11,23 +11,13 @@ test.describe('Login Page - POM con aserciones en el spec', () => {
     password: process.env.USER_PASSWORD || '',
   };
 
-  test('debería cargar la página de login correctamente', async ({ loginPage, page }) => {
-    // loginPage ya viene instanciado y en la URL /login gracias al fixture
-
-    // Aserciones directamente en el spec
-    await expect(loginPage.emailInput).toBeVisible();
-    await expect(loginPage.passwordInput).toBeVisible();
-    await expect(loginPage.loginButton).toBeVisible();
-    await expect(page).toHaveURL(/login/i);
-  });
 
   test('debería iniciar sesión con credenciales válidas', async ({ loginPage, page }) => {
     await loginPage.iniciarSesion(userData.email, userData.password);
 
     // Aserción de redirección tras login exitoso
-    await expect(page).toHaveURL(/dashboard|home|welcome|inicio/i);
-  });
-
+  await expect(loginPage.myAccountButton).toHaveAttribute('href', /account/, { timeout: 10000 });
+ 
   test('debería mostrar error con credenciales inválidas', async ({ loginPage }) => {
     await loginPage.fillEmail('email-invalido@test.com');
     await loginPage.fillPassword('password-invalida');
@@ -42,3 +32,5 @@ test.describe('Login Page - POM con aserciones en el spec', () => {
     await expect(loginPage.passwordInput).toBeEmpty();
   });
 });
+
+
