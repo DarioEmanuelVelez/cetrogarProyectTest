@@ -1,8 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './src',
-  testMatch: /.*\.spect\.ts$/,
+  testDir: './src/tests/',
+  testMatch: /.*\.(spec|test)\.ts$/,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -10,7 +10,7 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
-    baseURL: 'https://www.cetrogar.com.ar',
+    baseURL: 'https://www.cetrogar.com.ar/api/io/login',
     storageState: 'storageState.json',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',

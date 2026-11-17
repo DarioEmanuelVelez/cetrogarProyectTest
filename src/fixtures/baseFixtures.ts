@@ -1,5 +1,5 @@
 import { test as base, Page } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
+import { LoginPage } from '../pages/LoginPage';
 
 /**
  * Fixtures personalizados para Playwright.
