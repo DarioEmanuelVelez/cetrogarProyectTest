@@ -19,7 +19,7 @@ export class LoginPage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly emailPasswordButton: Locator;
-  readonly myAccountButton: Locator;
+  readonly buttonAceptar: Locator;
   readonly errorMessage: Locator;
 
   constructor(page: Page) {
@@ -45,10 +45,8 @@ export class LoginPage {
       name: /Entrar con e-mail y contraseña/i,
     });
 
-     
-    this.myAccountButton = page.getByRole('link', {
-      name: /Mi Cuenta/i,
-    });
+    
+     this.buttonAceptar = page.getByRole('button', { name: 'Close modal' });    
 
     // Mensaje de error
     this.errorMessage = page.getByText(
@@ -78,12 +76,22 @@ export class LoginPage {
     await this.loginButton.click();
   }
 
+async closeModal(): Promise<void> {
+  try {
+    await this.buttonAceptar.waitFor({ state: 'visible', timeout: 4000 });
+    await this.buttonAceptar.click();
+  } catch {
+    // Si no aparece el modal, no rompe el test
+  }
+}
+
   /** Ejecuta el flujo completo de inicio de sesión */
   async iniciarSesion(email: string, password: string): Promise<void> {
     await this.goto();
     await this.fillEmail(email);
     await this.fillPassword(password);
     await this.clickLoginButton();
+    await this.closeModal();
   }
 
 }

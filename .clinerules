@@ -1,4 +1,4 @@
 guardar archivos sensibles en archivo .env 
-los test y las aserciones no pueden ir en el mismo archivo. 
+En los formatos .spec.ts primero va a ir el test y abajo la asercion.
 solo utilizaremos las mejores practicas para que los test puedan ser escalables. 
 

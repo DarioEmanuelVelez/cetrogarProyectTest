@@ -17,13 +17,12 @@ export class HomePage {
     this.page = page;
 
     // Input del buscador (por placeholder, semántico)
-    this.searchInput = page.getByPlaceholder(/buscar|buscador/i);
-
+    this.searchInput = page.getByPlaceholder(/Estoy buscando/i);
     // Botón del buscador
     this.searchButton = page.getByRole('button', { name: /buscar/i });
 
     // Enlace a la cuenta del usuario
-    this.accountLink = page.getByRole('link', { name: /mi cuenta/i });
+   this.accountLink = page.getByText(/mi cuenta/i);
   }
 
   /** Navega a la página de inicio de Cetrogar */
